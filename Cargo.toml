@@ -1,0 +1,15 @@
+[package]
+name = "tdlib"
+version = "0.1.0"
+authors = ["D"]
+edition = "2018"
+build = "build.rs"
+
+[build-dependencies]
+itertools = "0.7.8"
+
+[dependencies]
+serde = "1.0.80"
+serde_derive = "1.0.80"
+tdjson = { git = "https://github.com/d653/tdjson-rs/" }
+serde_json = "1.0.33"
