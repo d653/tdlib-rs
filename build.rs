@@ -135,12 +135,12 @@ fn main() {
             let upt = uppercase_first_letter(pt);
             let (r, n) = rename_var(pn);
             if &parents[&fun.name] == pt {
-                writeln!(outfile, "    {} : Box<{}>,", n, upt).unwrap();
+                writeln!(outfile, "    pub {} : Box<{}>,", n, upt).unwrap();
             } else if r {
                 writeln!(outfile, "    #[serde(rename = \"{}\")]", pn).unwrap();
-                writeln!(outfile, "    {} : {},", n, upt).unwrap();
+                writeln!(outfile, "    pub {} : {},", n, upt).unwrap();
             } else {
-                writeln!(outfile, "    {} : {},", pn, upt).unwrap();
+                writeln!(outfile, "    pub {} : {},", pn, upt).unwrap();
             }
         }
         writeln!(outfile, "}}").unwrap();
