@@ -65,7 +65,7 @@ fn main() {
     let natives = [
         ("Int32", "i32"),
         ("Int53", "i64"),
-        ("Int64", "i64"),
+        ("Int64", "String"),
         ("Double", "f64"),
         ("Vector<T>", "Vec<T>"),
         ("string", "String"),

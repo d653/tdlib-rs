@@ -382,7 +382,7 @@ dependencies = [
 [[package]]
 name = "tdjson"
 version = "0.1.2"
-source = "git+https://github.com/d653/tdjson-rs/#3518bb1de48be1ef0ce2618fc8a812818da21c22"
+source = "git+https://github.com/d653/tdjson-rs/#3f26a080d92cbecb9574cf5806aa1f13b423d62a"
 dependencies = [
  "tdjson-sys 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
