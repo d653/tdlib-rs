@@ -2,6 +2,7 @@
 TDLib Rust high level bindings
 
 WIP
+TODO: the .tl file specifies in the COMMENTS if a field may be null, this implementation currently panics if some field is missing
 
 ```rust
 use tdlib::*;
