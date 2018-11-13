@@ -5,7 +5,7 @@ WIP
 
 The specifications of the tdlib json API are terrible. They are designed with OOP in mind. Types are defined using inheritance. Pointers may be null, and one needs to read the //comments to see if it is the case. Parameters that may be null are not specified at all. Some fields are just omitted, when they have some default value. Some lines of the original .tl file contain errors, like unexpected tokens. Also, in the .tl file, some functions are just described wrongly. This library tries to model these objects using Rust enums, using a manually fixed .tl file that gets automatically converted to Rust code.
 
-Currently, the deserialization of the incoming updates may be slow. This library uses the serde untagged attribute in order to deserialize automatically to enums. The untagged attribute is described as follows. "There is no explicit tag identifying which variant the data contains. Serde will try to match the data against each variant in order and the first one that deserializes successfully is the one returned."
+Currently, the deserialization of the incoming updates may be slow. This library uses the serde untagged attribute in order to deserialize automatically to enums. The untagged attribute is described as follows. "There is no explicit tag identifying which variant the data contains. Serde will try to match the data against each variant in order and the first one that deserializes successfully is the one returned". Also, compiling the generated code takes roughly 4.5GB of ram and some minutes.
 
 Anyway, this is a working example:
 

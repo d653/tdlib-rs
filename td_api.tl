@@ -688,7 +688,7 @@ notificationSettingsScopeGroupChats = NotificationSettingsScope;
 //@sound The name of an audio file to be used for notification sounds; only applies to iOS applications
 //@use_default_show_preview If true, show_preview is ignored and the value for the relevant type of chat is used instead
 //@show_preview True, if message content should be displayed in notifications
-chatNotificationSettings mute_for:Option<int32> sound:Option<string> show_preview:Option<Bool> = ChatNotificationSettings;
+chatNotificationSettings mute_for:Option<int32> sound:Option<string> show_preview:Option<Bool> = BugNotificationSettings;
 
 //@description Contains information about notification settings for a chat
 //@use_default_mute_for If true, mute_for is ignored and the value for the relevant type of chat is used instead
@@ -697,7 +697,7 @@ chatNotificationSettings mute_for:Option<int32> sound:Option<string> show_previe
 //@sound The name of an audio file to be used for notification sounds; only applies to iOS applications
 //@use_default_show_preview If true, show_preview is ignored and the value for the relevant type of chat is used instead
 //@show_preview True, if message content should be displayed in notifications
-notificationSettings mute_for:Option<int32> sound:Option<string> show_preview:Option<Bool> = NotificationSettings;
+notificationSettings mute_for:Option<int32> sound:Option<string> show_preview:Option<Bool> = BugNotificationSettings;
 
 //@description Contains information about notification settings for several chats
 //@mute_for Time left before notifications will be unmuted, in seconds
@@ -754,7 +754,8 @@ chatTypeSecret secret_chat_id:int32 user_id:int32 = ChatType;
 //@reply_markup_message_id Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
 //@draft_message A draft of a message in the chat; may be null
 //@client_data Contains client-specific data associated with the chat. (For example, the chat position or local chat notification settings can be stored here.) Persistent if a message database is used
-chat id:int53 type:ChatType title:string photo:Option<chatPhoto> last_message:Option<message> order:int64 is_pinned:Bool is_marked_as_unread:Bool is_sponsored:Bool can_be_reported:Bool default_disable_notification:Bool unread_count:int32 last_read_inbox_message_id:int53 last_read_outbox_message_id:int53 unread_mention_count:int32 notification_settings:notificationSettings reply_markup_message_id:int53 draft_message:Option<draftMessage> client_data:string = Chat;
+chat id:int53 type:ChatType title:string photo:Option<chatPhoto> last_message:Option<message> order:int64 is_pinned:Bool is_marked_as_unread:Bool is_sponsored:Bool can_be_reported:Bool default_disable_notification:Bool unread_count:int32 last_read_inbox_message_id:int53 last_read_outbox_message_id:int53 unread_mention_count:int32 notification_settings:BugNotificationSettings reply_markup_message_id:int53 draft_message:Option<draftMessage> client_data:string = Chat;
+
 
 //@description Represents a list of chats
 //@chat_ids List of chat identifiers
