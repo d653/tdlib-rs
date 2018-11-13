@@ -134,14 +134,22 @@ fn main() {
         for (pn, pt) in &fun.params {
             let upt = uppercase_first_letter(pt);
             let (r, n) = rename_var(pn);
-            if &parents[&fun.name] == pt {
+            /*if &parents[&fun.name] == pt {
                 writeln!(outfile, "    pub {} : Box<{}>,", n, upt).unwrap();
-            } else if r {
+            } else */
+            if let Some(s) = match pt.as_str() {
+                "int32" => { Some("default_int32") }
+                "int53" => { Some("default_int53") }
+                "int64" => { Some("default_int64") }
+                "Bool" => { Some("default_bool") }
+                _ => { None }
+
+            } { writeln!(outfile, "    #[serde(default = \"{}\")]", s).unwrap(); }
+            if r {
                 writeln!(outfile, "    #[serde(rename = \"{}\")]", pn).unwrap();
-                writeln!(outfile, "    pub {} : {},", n, upt).unwrap();
-            } else {
-                writeln!(outfile, "    pub {} : {},", pn, upt).unwrap();
             }
+            writeln!(outfile, "    pub {} : {},", n, upt).unwrap();
+
         }
         writeln!(outfile, "}}").unwrap();
         writeln!(outfile, "impl {} {{", upper).unwrap();
@@ -170,9 +178,10 @@ fn main() {
             .iter()
             .map(|(pn, pt)| {
                 let (_, pn) = rename_var(pn);
-                if &parents[&fun.name] == pt {
+                /*if &parents[&fun.name] == pt {
                     format!("            {} : Box::new({}.into()),", pn, pn)
-                } else if abstracts.contains(pt) {
+                } else */
+                if abstracts.contains(pt) {
                     format!("            {} : {}.into(),", pn, pn)
                 } else {
                     format!("            {},", pn)
@@ -258,7 +267,31 @@ fn main() {
             .unwrap();
         }
     }
+
+
+    writeln!(outfile,r#"
+
+fn default_int32() -> i32 {{
+    0
+}}
+
+fn default_int53() -> i64 {{
+    0
+}}
+
+fn default_int64() -> String {{
+    String::from("0")
+}}
+
+fn default_bool() -> bool {{
+    false
+}}
+
+    "#).unwrap();
 }
+
+
+
 
 fn uppercase_first_letter(s: &str) -> String {
     let mut c = s.chars();
